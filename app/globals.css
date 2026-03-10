@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-inter);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
   }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Animated Background Blob */
+@keyframes color-blob {
+  0% { transform: translate(0px, 0px) scale(1); background-color: rgba(251, 146, 60, 0.2); }
+  25% { transform: translate(40px, -60px) scale(1.1); background-color: rgba(234, 179, 8, 0.2); }
+  50% { transform: translate(-30px, 40px) scale(0.9); background-color: rgba(16, 185, 129, 0.2); }
+  75% { transform: translate(-60px, -20px) scale(1.05); background-color: rgba(59, 130, 246, 0.2); }
+  100% { transform: translate(0px, 0px) scale(1); background-color: rgba(251, 146, 60, 0.2); }
+}
+.animate-color-blob {
+  animation: color-blob 25s infinite alternate ease-in-out;
+}
+
+/* Shape-Shifting & Color-Changing Blob for Landing Page */
+@keyframes shifting-blob {
+  0% { transform: translate(0vw, 0px) scale(1); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; background-color: rgba(147, 51, 234, 0.5); }
+  33% { transform: translate(15vw, -80px) scale(1.4); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; background-color: rgba(59, 130, 246, 0.6); }
+  66% { transform: translate(-15vw, 80px) scale(0.7); border-radius: 30% 70% 60% 40% / 50% 60% 40% 60%; background-color: rgba(251, 146, 60, 0.5); }
+  100% { transform: translate(5vw, -40px) scale(1.2); border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; background-color: rgba(236, 72, 153, 0.6); }
+}
+.animate-shifting-blob {
+  animation: shifting-blob 12s infinite alternate ease-in-out;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar globally */
+html, body, * {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none !important;
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), serif;
 }
