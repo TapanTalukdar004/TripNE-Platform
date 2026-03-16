@@ -1,0 +1,259 @@
+{
+  "totalCodeImages": 95,
+  "totalFolderFiles": 78,
+  "exactMatchesCount": 0,
+  "fuzzyMatchesCount": 51,
+  "missingCount": 44,
+  "missing": [
+    "assam-kaziranga-rhino.jpg",
+    "assam-tea-gardens.jpg",
+    "northeast-india-hero-banner-3.png",
+    "northeast-india-hero-banner-2.png",
+    "northeast-india-hero-banner-4.png",
+    "arunachal-pradesh-landscape.jpg",
+    "yngksiar-waterfalls-meghalaya-india.jpg",
+    "nagaland-festival-tribes.webp",
+    "sikkim-monastery-kanchenjunga.jpg",
+    "tripura-ujjayanta-palace.jpg",
+    "mizoram-rolling-hills.webp",
+    "manipur-loktak-lake.jpg",
+    "noise.png",
+    "northeast-india-tour-guide.jpg",
+    "mizoram-hills-view.jpg",
+    "arunachal-pradesh-unseen-beauty.jpg",
+    "assam-travel-destination.jpg",
+    "meghalaya-tourism-clouds.jpg",
+    "nagaland-dzuko-valley.jpg",
+    "sikkim-himalayan-destination.jpg",
+    "manipur-jewel-of-india.webp",
+    "tripura-agartala-palace.jpg",
+    "meghalaya-dawki-river.jpg",
+    "arunachal-cultural-tour.jpg",
+    "meghalaya-living-root-bridge.jpg",
+    "northeast-explorer.webp",
+    "mizoram-hero.jpg",
+    "kaziranga-national-park.jpg",
+    "northeast-tour-highlight-2.jpg",
+    "northeast-tour-highlight-1.jpg",
+    "northeast-tour-highlight-4.jpg",
+    "northeast-tour-highlight-6.jpg",
+    "northeast-tour-highlight-2-3.jpg",
+    "northeast-tour-highlight-2-6.jpg",
+    "northeast-tour-highlight-3-1.jpg",
+    "Namdapha National Park.jpg",
+    "1559127574-1559127559952.jpg",
+    "northeast-tour-highlight-8-6.jpg",
+    "mizoram-hero'.jpg",
+    "Reiek Tlang.jpg",
+    "Vantawng Falls.jpg",
+    "626bcd981143c-beino-caslte-1.jpg",
+    "loktak lake.png",
+    "Melaghar (Neermahal).jpg"
+  ],
+  "fuzzyMatches": [
+    {
+      "code": "bihu.jpg",
+      "folder": "destinations-page-bihu.jpg"
+    },
+    {
+      "code": "caves.jpg",
+      "folder": "destinations-page-caves.jpg"
+    },
+    {
+      "code": "mask.jpg",
+      "folder": "destinations-page-mask.jpg"
+    },
+    {
+      "code": "arunachal1.png",
+      "folder": "destinations-page-arunachal1.png"
+    },
+    {
+      "code": "head2.jpg",
+      "folder": "login-page-head2.jpg"
+    },
+    {
+      "code": "head8.jpg",
+      "folder": "login-page-head8.jpg"
+    },
+    {
+      "code": "img1.jpg",
+      "folder": "login-page-img1.jpg"
+    },
+    {
+      "code": "mylong.jpg",
+      "folder": "home-hero-mylong.jpg"
+    },
+    {
+      "code": "rhino-kaziranga.jpg",
+      "folder": "data-packages-rhino-kaziranga.jpg"
+    },
+    {
+      "code": "shillong-1.jpg",
+      "folder": "data-packages-shillong-1.jpg"
+    },
+    {
+      "code": "gangtok.jpg",
+      "folder": "data-packages-gangtok.jpg"
+    },
+    {
+      "code": "imphal.jpg",
+      "folder": "data-packages-imphal.jpg"
+    },
+    {
+      "code": "tripura.jpg",
+      "folder": "data-packages-tripura.jpg"
+    },
+    {
+      "code": "assam-hero1.jpg",
+      "folder": "data-states-assam-hero1.jpg"
+    },
+    {
+      "code": "neland.jpg",
+      "folder": "data-states-neland.jpg"
+    },
+    {
+      "code": "jorhat-tea.jpg",
+      "folder": "data-states-jorhat-tea.jpg"
+    },
+    {
+      "code": "Mawlynnong.jpg",
+      "folder": "data-states-Mawlynnong.jpg"
+    },
+    {
+      "code": "khasi.jpg",
+      "folder": "data-states-khasi.jpg"
+    },
+    {
+      "code": "Wari-chora.jpg",
+      "folder": "data-states-Wari-chora.jpg"
+    },
+    {
+      "code": "ziro.jpg",
+      "folder": "data-states-ziro.jpg"
+    },
+    {
+      "code": "adi.jpg",
+      "folder": "data-states-adi.jpg"
+    },
+    {
+      "code": "apatani.jpg",
+      "folder": "data-states-apatani.jpg"
+    },
+    {
+      "code": "mechuka.jpg",
+      "folder": "data-states-mechuka.jpg"
+    },
+    {
+      "code": "nagaland-hero.jpg",
+      "folder": "data-states-nagaland-hero.jpg"
+    },
+    {
+      "code": "mon.png",
+      "folder": "data-states-mon.png"
+    },
+    {
+      "code": "Mokokchung.jpg",
+      "folder": "data-states-Mokokchung.jpg"
+    },
+    {
+      "code": "mon.jpg",
+      "folder": "data-states-mon.jpg"
+    },
+    {
+      "code": "angami.jpg",
+      "folder": "data-states-angami.jpg"
+    },
+    {
+      "code": "naga.jpg",
+      "folder": "data-states-naga.jpg"
+    },
+    {
+      "code": "warrior.webp",
+      "folder": "data-states-warrior.webp"
+    },
+    {
+      "code": "sign.jpg",
+      "folder": "data-states-sign.jpg"
+    },
+    {
+      "code": "pel.png",
+      "folder": "data-states-pel.png"
+    },
+    {
+      "code": "sik.jpeg",
+      "folder": "data-states-sik.jpeg"
+    },
+    {
+      "code": "dress.jpg",
+      "folder": "data-states-dress.jpg"
+    },
+    {
+      "code": "aizawl.jpg",
+      "folder": "data-states-aizawl.jpg"
+    },
+    {
+      "code": "Champhai.jpg",
+      "folder": "data-states-Champhai.jpg"
+    },
+    {
+      "code": "mizotribe.jpg",
+      "folder": "data-states-mizotribe.jpg"
+    },
+    {
+      "code": "mizoram-f1.jpg",
+      "folder": "data-states-mizoram-f1.jpg"
+    },
+    {
+      "code": "mizo-tribe.jpg",
+      "folder": "data-states-mizo-tribe.jpg"
+    },
+    {
+      "code": "manipur-hero.jpg",
+      "folder": "data-states-manipur-hero.jpg"
+    },
+    {
+      "code": "Ukhrul.jpg",
+      "folder": "data-states-Ukhrul.jpg"
+    },
+    {
+      "code": "Moirang.jpg",
+      "folder": "data-states-Moirang.jpg"
+    },
+    {
+      "code": "manipur-t2.jpg",
+      "folder": "data-states-manipur-t2.jpg"
+    },
+    {
+      "code": "manipur-t1.jpg",
+      "folder": "data-states-manipur-t1.jpg"
+    },
+    {
+      "code": "tripura-hero.jpg",
+      "folder": "data-states-tripura-hero.jpg"
+    },
+    {
+      "code": "agartala.jpg",
+      "folder": "data-states-agartala.jpg"
+    },
+    {
+      "code": "Unakoti.jpg",
+      "folder": "data-states-Unakoti.jpg"
+    },
+    {
+      "code": "Udaipur.jpg",
+      "folder": "data-states-Udaipur.jpg"
+    },
+    {
+      "code": "Tripura-t1.jpg",
+      "folder": "data-states-Tripura-t1.jpg"
+    },
+    {
+      "code": "longwa.jpg",
+      "folder": "data-states-longwa.jpg"
+    },
+    {
+      "code": "tripura2.jpg",
+      "folder": "data-states-tripura2.jpg"
+    }
+  ]
+}

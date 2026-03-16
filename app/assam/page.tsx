@@ -2,6 +2,7 @@ import Image from "next/image";
 import { createBooking } from "@/app/actions/booking";
 import { getSession } from "@/lib/session";
 import { Map, Users, CheckCircle } from "lucide-react";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 export const metadata = {
   title: "Assam Tour Packages - TripNE",
@@ -18,7 +19,7 @@ export default async function AssamPage() {
       title: "Assam Wildlife Safari",
       days: 5,
       price: 22999,
-      img: "/images/assam-kaziranga-rhino.jpg",
+      img: cloudinaryUrl("assam-kaziranga-rhino.jpg"),
       points: [
         "Kaziranga National Park Jeep Safari",
         "Majuli Island Cultural Tour",
@@ -33,7 +34,7 @@ export default async function AssamPage() {
       {/* Hero */}
       <div className="relative h-[500px] w-full mb-16">
         <Image 
-          src="/images/assam-tea-gardens.jpg" 
+          src={cloudinaryUrl("assam-tea-gardens.jpg")} 
           alt="Assam Tea Gardens" 
           fill 
           className="object-cover"

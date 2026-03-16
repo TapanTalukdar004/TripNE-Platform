@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 export default function Hero() {
   return (
@@ -10,7 +11,7 @@ export default function Hero() {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-[center_top] bg-no-repeat"
-        style={{ backgroundImage: "url('/images/mylong.jpg')" }}
+        style={{ backgroundImage: `url(${cloudinaryUrl("mylong.jpg")})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />
       </div>

@@ -3,16 +3,17 @@
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 const statesData = [
-  { name: "Arunachal Pradesh", img: "/images/arunachal-pradesh-landscape.jpg", tag: "Dawn-Lit Mountains" },
-  { name: "Assam", img: "/images/assam-tea-gardens.jpg", tag: "One-Horned Rhino & Tea" },
-  { name: "Meghalaya", img: "/images/meghalaya-living-root-bridge.jpg", tag: "Abode of Clouds" },
-  { name: "Nagaland", img: "/images/nagaland-festival-tribes.webp", tag: "Land of Festivals" },
-  { name: "Sikkim", img: "/images/sikkim-monastery-kanchenjunga.jpg", tag: "Himalayan Wonderland" },
-  { name: "Tripura", img: "/images/tripura-ujjayanta-palace.jpg", tag: "Rich History" },
-  { name: "Mizoram", img: "/images/mizoram-rolling-hills.webp", tag: "Land of Highlanders" },
-  { name: "Manipur", img: "/images/manipur-loktak-lake.jpg", tag: "The Jeweled Land" }
+  { name: "Arunachal Pradesh", img: cloudinaryUrl("arunachal-pradesh-landscape.jpg"), tag: "Dawn-Lit Mountains" },
+  { name: "Assam", img: cloudinaryUrl("assam-tea-gardens.jpg"), tag: "One-Horned Rhino & Tea" },
+  { name: "Meghalaya", img: cloudinaryUrl("meghalaya-living-root-bridge.jpg"), tag: "Abode of Clouds" },
+  { name: "Nagaland", img: cloudinaryUrl("nagaland-festival-tribes.webp"), tag: "Land of Festivals" },
+  { name: "Sikkim", img: cloudinaryUrl("sikkim-monastery-kanchenjunga.jpg"), tag: "Himalayan Wonderland" },
+  { name: "Tripura", img: cloudinaryUrl("tripura-ujjayanta-palace.jpg"), tag: "Rich History" },
+  { name: "Mizoram", img: cloudinaryUrl("mizoram-rolling-hills.webp"), tag: "Land of Highlanders" },
+  { name: "Manipur", img: cloudinaryUrl("manipur-loktak-lake.jpg"), tag: "The Jeweled Land" }
 ];
 
 export default function StatesGrid() {

@@ -5,16 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useEffect } from "react";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 const destinations = [
-  { name: "Mizoram", img: "/images/mizoram-hills-view.jpg" },
-  { name: "Arunachal Pradesh", img: "/images/arunachal-pradesh-unseen-beauty.jpg" },
-  { name: "Assam", img: "/images/assam-travel-destination.jpg" },
-  { name: "Meghalaya", img: "/images/meghalaya-tourism-clouds.jpg" },
-  { name: "Nagaland", img: "/images/nagaland-dzuko-valley.jpg" },
-  { name: "Sikkim", img: "/images/sikkim-himalayan-destination.jpg" },
-  { name: "Manipur", img: "/images/manipur-jewel-of-india.webp" },
-  { name: "Tripura", img: "/images/tripura-agartala-palace.jpg" }
+  { name: "Mizoram", img: cloudinaryUrl("mizoram-hills-view.jpg") },
+  { name: "Arunachal Pradesh", img: cloudinaryUrl("arunachal-pradesh-unseen-beauty.jpg") },
+  { name: "Assam", img: cloudinaryUrl("assam-travel-destination.jpg") },
+  { name: "Meghalaya", img: cloudinaryUrl("meghalaya-tourism-clouds.jpg") },
+  { name: "Nagaland", img: cloudinaryUrl("nagaland-dzuko-valley.jpg") },
+  { name: "Sikkim", img: cloudinaryUrl("sikkim-himalayan-destination.jpg") },
+  { name: "Manipur", img: cloudinaryUrl("manipur-jewel-of-india.webp") },
+  { name: "Tripura", img: cloudinaryUrl("tripura-agartala-palace.jpg") }
 ];
 
 export default function DestinationsSlider() {

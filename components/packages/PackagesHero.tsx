@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 export default function PackagesHero() {
   return (
@@ -8,7 +9,7 @@ export default function PackagesHero() {
       {/* Background Image with Parallax Fixed Attachment */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed scale-105"
-        style={{ backgroundImage: "url('/images/sikkim-himalayan-destination.jpg')" }}
+        style={{ backgroundImage: `url(${cloudinaryUrl("sikkim-himalayan-destination.jpg")})` }}
       />
       
       {/* Darkened Gradient Overlay to guarantee text readability */}

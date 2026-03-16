@@ -8,11 +8,12 @@ import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 const BACKGROUND_IMAGES = [
-  '/images/head2.jpg',
-  '/images/head8.jpg',
-  '/images/img1.jpg'
+  cloudinaryUrl("head2.jpg"),
+  cloudinaryUrl("head8.jpg"),
+  cloudinaryUrl("img1.jpg")
 ];
 
 export default function LoginPage() {

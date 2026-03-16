@@ -2,6 +2,7 @@ import VerticalAccordionGallery from "@/components/destinations/VerticalAccordio
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 export const metadata = {
   title: "Destinations - TripNE",
@@ -28,22 +29,22 @@ export default function DestinationsPage() {
             
             {/* Image 1: Bihu */}
             <div className="absolute top-[5%] left-[5%] w-[55%] h-[50%] rounded-xl overflow-hidden shadow-2xl z-10 border-4 border-[#EFEFE8] dark:border-zinc-950 transition-transform duration-500 hover:scale-105 hover:z-40">
-              <Image src="/images/bihu.jpg" alt="Bihu Dance" fill className="object-cover" />
+              <Image src={cloudinaryUrl("bihu.jpg")} alt="Bihu Dance" fill className="object-cover" />
             </div>
             
             {/* Image 2: Caves (overlaps 1 and 3) */}
             <div className="absolute bottom-[5%] right-[5%] w-[60%] h-[55%] rounded-xl overflow-hidden shadow-2xl z-30 border-4 border-[#EFEFE8] dark:border-zinc-950 transition-transform duration-500 hover:scale-105 hover:z-40">
-              <Image src="/images/caves.jpg" alt="Northeast Caves" fill className="object-cover" />
+              <Image src={cloudinaryUrl("caves.jpg")} alt="Northeast Caves" fill className="object-cover" />
             </div>
 
             {/* Image 3: Mask (underneath) */}
             <div className="absolute top-[40%] left-[0%] w-[45%] h-[40%] rounded-xl overflow-hidden shadow-xl z-20 border-4 border-[#EFEFE8] dark:border-zinc-950 transition-transform duration-500 hover:scale-105 hover:z-40">
-              <Image src="/images/mask.jpg" alt="Traditional Mask" fill className="object-cover" />
+              <Image src={cloudinaryUrl("mask.jpg")} alt="Traditional Mask" fill className="object-cover" />
             </div>
 
             {/* Image 4: Arunachal highlight */}
             <div className="absolute top-[10%] right-[0%] w-[35%] h-[35%] rounded-xl overflow-hidden shadow-lg z-0 border-4 border-[#EFEFE8] dark:border-zinc-950 transition-transform duration-500 hover:scale-110 hover:z-40">
-              <Image src="/images/arunachal1.png" alt="Arunachal Tribe" fill className="object-cover" />
+              <Image src={cloudinaryUrl("arunachal1.png")} alt="Arunachal Tribe" fill className="object-cover" />
             </div>
           </div>
 

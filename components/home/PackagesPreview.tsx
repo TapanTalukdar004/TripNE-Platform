@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Map } from "lucide-react";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 const packages = [
   {
@@ -11,7 +12,7 @@ const packages = [
     state: "Meghalaya",
     duration: "6 Day Tour",
     price: "₹29,999",
-    img: "/images/meghalaya-dawki-river.jpg",
+    img: cloudinaryUrl("meghalaya-dawki-river.jpg"),
     desc: "Explore the magical land of clouds. Trek to living root bridges, swim in crystal clear rivers, experience Khasi culture.",
     link: "/meghalaya"
   },
@@ -20,7 +21,7 @@ const packages = [
     state: "Assam",
     duration: "5 Day Tour",
     price: "₹22,999",
-    img: "/images/assam-kaziranga-rhino.jpg",
+    img: cloudinaryUrl("assam-kaziranga-rhino.jpg"),
     desc: "Experience rich wildlife, focusing on the one-horned rhino at Kaziranga and the unique cultural heritage of Majuli Island.",
     link: "/tours/assam-wildlife"
   },
@@ -29,7 +30,7 @@ const packages = [
     state: "Arunachal Pradesh",
     duration: "8 Day Tour",
     price: "₹34,999",
-    img: "/images/arunachal-cultural-tour.jpg",
+    img: cloudinaryUrl("arunachal-cultural-tour.jpg"),
     desc: "Discover unexplored Arunachal Pradesh with visits to ancient monasteries, tribal villages, and stunning mountain landscapes.",
     link: "/tours/arunachal-discovery"
   }
@@ -40,7 +41,7 @@ export default function PackagesPreview() {
     <section 
       className="py-12 md:py-24 relative"
       style={{
-        backgroundImage: "url('/images/sikkim-himalayan-destination.jpg')",
+        backgroundImage: `url(${cloudinaryUrl("sikkim-himalayan-destination.jpg")})`,
         backgroundAttachment: "fixed",
         backgroundSize: "cover",
         backgroundPosition: "center"

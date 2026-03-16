@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 export const metadata = {
   title: "Why Choose Us - TripNE",
@@ -46,13 +47,13 @@ export default function WhyUsPage() {
           {/* Left: Image Grid */}
           <div className="grid grid-cols-2 gap-4 h-[600px]">
             <div className="col-span-1 row-span-2 relative rounded-3xl overflow-hidden shadow-2xl">
-              <Image src="/images/northeast-india-hero-banner-3.png" alt="Traveler" fill className="object-cover" />
+              <Image src={cloudinaryUrl("northeast-india-hero-banner-3.png")} alt="Traveler" fill className="object-cover" />
             </div>
             <div className="col-span-1 relative rounded-3xl overflow-hidden shadow-xl">
-              <Image src="/images/northeast-india-hero-banner-2.png" alt="Landscape" fill className="object-cover" />
+              <Image src={cloudinaryUrl("northeast-india-hero-banner-2.png")} alt="Landscape" fill className="object-cover" />
             </div>
             <div className="col-span-1 relative rounded-3xl overflow-hidden shadow-xl">
-              <Image src="/images/northeast-india-hero-banner-4.png" alt="Culture" fill className="object-cover" />
+              <Image src={cloudinaryUrl("northeast-india-hero-banner-4.png")} alt="Culture" fill className="object-cover" />
             </div>
           </div>
 

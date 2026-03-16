@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Users, Hotel, MapPin, Route } from "lucide-react";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 const features = [
   {
@@ -90,7 +91,7 @@ export default function AboutGuide() {
             className="w-full lg:w-1/2 relative h-[600px] rounded-3xl overflow-hidden shadow-2xl"
           >
             <Image 
-              src="/images/northeast-india-tour-guide.jpg" 
+              src={cloudinaryUrl("northeast-india-tour-guide.jpg")} 
               alt="Northeast India Tour Guide" 
               fill 
               className="object-cover" 
@@ -110,7 +111,7 @@ export default function AboutGuide() {
               <div className="flex -space-x-3 mb-3">
                 {[1, 2, 3].map(i => (
                   <div key={i} className="w-10 h-10 rounded-full border-2 border-white dark:border-zinc-800 bg-zinc-200 overflow-hidden relative">
-                    <Image src={`/images/northeast-tour-highlight-${i}.jpg`} alt={`Traveler ${i}`} fill className="object-cover" />
+                    <Image src={cloudinaryUrl(`northeast-tour-highlight-${i}.jpg`)} alt={`Traveler ${i}`} fill className="object-cover" />
                   </div>
                 ))}
               </div>

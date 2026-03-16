@@ -1,3 +1,4 @@
+import { cloudinaryUrl } from "../cloudinaryUrl";
 export interface PricingOption {
   vehicleType: string;
   capacity: number;
@@ -67,10 +68,10 @@ export const PACKAGES_DATA: TourPackage[] = [
       { name: "Borgos Resort", type: "Luxury 5-Star", nightCount: 3 }
     ],
     gallery: [
-      "/images/rhino-kaziranga.jpg",
-      "/images/assam-tea-gardens.jpg"
+      cloudinaryUrl("rhino-kaziranga.jpg"),
+      cloudinaryUrl("assam-tea-gardens.jpg")
     ],
-    imgUrl: "/images/rhino-kaziranga.jpg"
+    imgUrl: cloudinaryUrl("rhino-kaziranga.jpg")
   },
   {
     id: "meghalaya-monsoon",
@@ -119,11 +120,11 @@ export const PACKAGES_DATA: TourPackage[] = [
       { name: "Shillong Center Hotel", type: "Standard 4-Star", nightCount: 1 }
     ],
     gallery: [
-      "/images/meghalaya-dawki-river.jpg",
-      "/images/yngksiar-waterfalls-meghalaya-india.jpg",
-      "/images/shillong-1.jpg"
+      cloudinaryUrl("meghalaya-dawki-river.jpg"),
+      cloudinaryUrl("yngksiar-waterfalls-meghalaya-india.jpg"),
+      cloudinaryUrl("shillong-1.jpg")
     ],
-    imgUrl: "/images/meghalaya-dawki-river.jpg"
+    imgUrl: cloudinaryUrl("meghalaya-dawki-river.jpg")
   },
   {
     id: "dzuko-trek",
@@ -169,10 +170,10 @@ export const PACKAGES_DATA: TourPackage[] = [
       { name: "Dzukou Valley Tents", type: "Alpine Camping", nightCount: 2 }
     ],
     gallery: [
-      "/images/nagaland-dzuko-valley.jpg",
-      "/images/nagaland-festival-tribes.webp"
+      cloudinaryUrl("nagaland-dzuko-valley.jpg"),
+      cloudinaryUrl("nagaland-festival-tribes.webp")
     ],
-    imgUrl: "/images/nagaland-dzuko-valley.jpg"
+    imgUrl: cloudinaryUrl("nagaland-dzuko-valley.jpg")
   },
   {
     id: "tawang-monastery",
@@ -227,10 +228,10 @@ export const PACKAGES_DATA: TourPackage[] = [
       { name: "Guwahati City Hotel", type: "City 4-Star", nightCount: 1 }
     ],
     gallery: [
-      "/images/arunachal-pradesh-landscape.jpg",
-      "/images/arunachal-pradesh-unseen-beauty.jpg"
+      cloudinaryUrl("arunachal-pradesh-landscape.jpg"),
+      cloudinaryUrl("arunachal-pradesh-unseen-beauty.jpg")
     ],
-    imgUrl: "/images/arunachal-pradesh-landscape.jpg"
+    imgUrl: cloudinaryUrl("arunachal-pradesh-landscape.jpg")
   },
   {
     id: "sikkim-delight",
@@ -278,11 +279,11 @@ export const PACKAGES_DATA: TourPackage[] = [
       { name: "North Sikkim Homestay", type: "Basic High-Altitude", nightCount: 2 }
     ],
     gallery: [
-      "/images/sikkim-monastery-kanchenjunga.jpg",
-      "/images/sikkim-himalayan-destination.jpg",
-      "/images/gangtok.jpg"
+      cloudinaryUrl("sikkim-monastery-kanchenjunga.jpg"),
+      cloudinaryUrl("sikkim-himalayan-destination.jpg"),
+      cloudinaryUrl("gangtok.jpg")
     ],
-    imgUrl: "/images/sikkim-monastery-kanchenjunga.jpg"
+    imgUrl: cloudinaryUrl("sikkim-monastery-kanchenjunga.jpg")
   },
   {
     id: "loktak-jewel",
@@ -326,10 +327,10 @@ export const PACKAGES_DATA: TourPackage[] = [
       { name: "Classic Grande Imphal", type: "Premium", nightCount: 3 }
     ],
     gallery: [
-      "/images/manipur-loktak-lake.jpg",
-      "/images/imphal.jpg"
+      cloudinaryUrl("manipur-loktak-lake.jpg"),
+      cloudinaryUrl("imphal.jpg")
     ],
-    imgUrl: "/images/manipur-loktak-lake.jpg"
+    imgUrl: cloudinaryUrl("manipur-loktak-lake.jpg")
   },
   {
     id: "northeast-grand-explorer",
@@ -396,10 +397,10 @@ export const PACKAGES_DATA: TourPackage[] = [
       { name: "Polo Towers Agartala", type: "5-Star Luxury", nightCount: 2 }
     ],
     gallery: [
-      "/images/arunachal-pradesh-landscape.jpg",
-      "/images/tripura.jpg",
-      "/images/mizoram-hero.jpg"
+      cloudinaryUrl("arunachal-pradesh-landscape.jpg"),
+      cloudinaryUrl("tripura.jpg"),
+      cloudinaryUrl("mizoram-hero.jpg")
     ],
-    imgUrl: "/images/assam-tea-gardens.jpg"
+    imgUrl: cloudinaryUrl("assam-tea-gardens.jpg")
   }
 ];

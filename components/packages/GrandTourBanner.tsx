@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, CalendarDays } from "lucide-react";
+import { cloudinaryUrl } from "../../lib/cloudinaryUrl";
 
 export default function GrandTourBanner() {
   return (
@@ -18,7 +19,7 @@ export default function GrandTourBanner() {
         {/* Top Image Section - Purely Static Layout */}
         <div className="relative w-full h-[250px] sm:h-[350px]">
           <Image 
-            src="/images/northeast-explorer.webp"
+            src={cloudinaryUrl("northeast-explorer.webp")}
             alt="Northeast Explorer Grand Tour"
             fill
             className="object-cover object-[center_30%]"
