@@ -48,8 +48,8 @@ const destinationsData = [
     name: "Tripura",
     subtitle: "The Pearl of the East",
     youtubeId: "e0AK_54eFRc",
-    start: 43,
-    end: 135,
+    start: 67,
+    end: 175,
     imgUrl: cloudinaryUrl("tripura-ujjayanta-palace.jpg"),
   },
   {
