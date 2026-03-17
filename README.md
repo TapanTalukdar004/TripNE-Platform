@@ -24,6 +24,24 @@ TripNE is a highly-premium, next-generation travel booking platform specifically
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Database**: [MongoDB](https://www.mongodb.com/) via Mongoose
 - **Deployment**: [Vercel](https://vercel.com/)
+- **Telegram Bot API**: Backplane messaging matrix
+
+## 🤖 Telegram Bot Integration
+
+TripNE includes a fail-safe Telegram Bot integration for delivering custom itineraries directly to users' chat apps.
+
+- **Account Linking**: Users link their Telegram account securely via a `/start <userId>` deep link trigger activated directly on their Profile page widget.
+- **Fail-Safe Itinerary Dispatch**: Custom Quote generation dispatches itineraries layout templates into Telegram automatically if connected, keeping email strictly as a secondary threshold fallback.
+- **Real-Time Interface Polling**: Status components poll raw database endpoints to bypass cached tokens and immediately update layouts connecting fully inside 3 seconds flat.
+
+### ⚙️ Environment Configuration 
+To initialize triggers, you must provide:
+- `TELEGRAM_BOT_TOKEN`: Create a bot via BotFather and add this token directly into your dashboard variables.
+
+### 🔗 Webhook Setup (Live Deploy)
+Once deployed on Vercel:
+1. Update `scripts/set_webhook_vercel.js` with your absolute `VERCEL_DOMAIN`.
+2. Run `node scripts/set_webhook_vercel.js` in your terminal to sync listener ports.
 
 ## 🏃‍♂️ Running Locally
 
