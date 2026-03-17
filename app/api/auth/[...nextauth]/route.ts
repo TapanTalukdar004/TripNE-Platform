@@ -65,6 +65,17 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       if (session.user) {
         (session.user as any).id = token.id;
+        
+        // Fetch up-to-date telegram info
+        try {
+          await dbConnect();
+          const dbUser = await User.findById(token.id).select('telegramChatId');
+          if (dbUser) {
+            (session.user as any).telegramChatId = dbUser.telegramChatId;
+          }
+        } catch (error) {
+          console.error("Session callback DB error:", error);
+        }
       }
       return session;
     },

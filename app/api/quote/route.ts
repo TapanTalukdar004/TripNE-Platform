@@ -6,6 +6,8 @@ import { createGroq } from '@ai-sdk/groq';
 import { Resend } from 'resend';
 import { TripQuoteEmail } from '@/components/emails/TripQuoteEmail';
 import { render } from '@react-email/render';
+import User from '@/models/User';
+import mongoose from 'mongoose';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const groq = createGroq({ apiKey: process.env.GROQ_API_KEY });
@@ -49,37 +51,81 @@ Task: You are an elite travel planner for TripNE (Northeast India). Generate a c
       prompt: promptText,
     });
 
-    // Step 3: Email Delivery (TESTING MODE)
-    // Render the React Email component to pure HTML
-    const emailHtml = await render(
-      TripQuoteEmail({
-        customerName,
-        destinations: destinations?.join(', ') || 'Northeast India',
-        duration: duration || 'your trip',
-        aiGeneratedQuote: aiGeneratedHtml
-      })
-    );
+    // Step 3: Email Delivery (FAIL-SAFE)
+    let emailSent = false;
+    try {
+      const emailHtml = await render(
+        TripQuoteEmail({
+          customerName,
+          destinations: destinations?.join(', ') || 'Northeast India',
+          duration: duration || 'your trip',
+          aiGeneratedQuote: aiGeneratedHtml
+        })
+      );
 
-    const emailResponse = await resend.emails.send({
-      from: 'TripNE Concierge <onboarding@resend.dev>', // Resend testing domain
-      to: [customerEmail],
-      subject: 'Your Custom TripNE Itinerary is Ready!',
-      html: emailHtml,
-    });
+      const emailResponse = await resend.emails.send({
+        from: 'TripNE Concierge <onboarding@resend.dev>', // Resend testing domain
+        to: [customerEmail],
+        subject: 'Your Custom TripNE Itinerary is Ready!',
+        html: emailHtml,
+      });
 
-    if (emailResponse.error) {
-      console.error('Resend Error:', emailResponse.error);
-      throw new Error(`Failed to send email: ${emailResponse.error.message}`);
+      if (emailResponse.error) {
+        console.error('Resend Error:', emailResponse.error);
+        // Do not throw, continue execution
+      } else {
+        emailSent = true;
+      }
+    } catch (emailError: any) {
+      console.error('Resend Email Crash Error:', emailError);
+    }
+
+    // Step 3b: Telegram Delivery
+    try {
+      // Find user using RAW MongoDB to avoid Mongoose schema caching filters
+      const db = mongoose.connection.db;
+      const dbUser = await db!.collection('users').findOne({ email: customerEmail.toLowerCase().trim() });
+      if (dbUser && dbUser.telegramChatId) {
+        const botToken = process.env.TELEGRAM_BOT_TOKEN;
+        if (botToken) {
+          const telegramText = formatForTelegram(aiGeneratedHtml);
+          const telegramMessage = `✨ **Your Custom TripNE Itinerary is Ready!** ✨\n\n` + telegramText;
+
+          // Split message if too long for Telegram (Limit 4096)
+          let finalMessage = telegramMessage;
+          if (finalMessage.length > 4000) {
+             finalMessage = finalMessage.slice(0, 4000) + "\n\n... (Check your email for full details!)";
+          }
+
+          const tgResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chat_id: dbUser.telegramChatId,
+              text: finalMessage,
+              parse_mode: 'HTML', 
+            }),
+          });
+          
+          if (!tgResponse.ok) {
+            console.error("Telegram API Failed:", await tgResponse.text());
+          } else {
+            console.log("Telegram message sent successfully to:", dbUser.telegramChatId);
+          }
+        }
+      }
+    } catch (tgError) {
+      console.error("Telegram Delivery Error in Quote Pipeline:", tgError);
     }
 
     // Step 4: Database Finalization
     await TripQuery.findByIdAndUpdate(newQuery._id, {
       status: 'COMPLETED',
       aiGeneratedQuote: aiGeneratedHtml,
-      isEmailedToUser: true
+      isEmailedToUser: emailSent
     });
 
-    return NextResponse.json({ success: true, message: 'Quote generated and emailed.' }, { status: 200 });
+    return NextResponse.json({ success: true, message: 'Quote processed.' }, { status: 200 });
 
   } catch (error: any) {
     console.error('Custom Quote Pipeline Error:', error);
@@ -94,4 +140,34 @@ Task: You are an elite travel planner for TripNE (Northeast India). Generate a c
 
     return NextResponse.json({ error: error?.message || 'Internal Server Error' }, { status: 500 });
   }
+}
+
+function formatForTelegram(html: string): string {
+  if (!html) return "";
+
+  let text = html;
+
+  // 1. Replace <h3> with bold and newline
+  text = text.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '\n<b>$1</b>\n');
+  
+  // 2. Replace <p> with newlines
+  text = text.replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n');
+
+  // 3. Handle lists
+  text = text.replace(/<ul[^>]*>(.*?)<\/ul>/gi, '$1\n');
+  text = text.replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n');
+
+  // 4. Handle standard formatting
+  text = text.replace(/<strong[^>]*>(.*?)<\/strong>/gi, '<b>$1</b>');
+  text = text.replace(/<b[^>]*>(.*?)<\/b>/gi, '<b>$1</b>');
+  text = text.replace(/<i[^>]*>(.*?)<\/i>/gi, '<i>$1</i>');
+  text = text.replace(/<em[^>]*>(.*?)<\/em>/gi, '<i>$1</i>');
+
+  // 5. Remove any other tags (e.g., div, span, etc.) to prevent parse errors
+  text = text.replace(/<[^>]+>/g, '');
+
+  // 6. Clean up multiple newlines
+  text = text.replace(/\n{3,}/g, '\n\n').trim();
+
+  return text;
 }

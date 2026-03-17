@@ -35,6 +35,7 @@ export default function CustomTripPlanner() {
   const [accommodation, setAccommodation] = useState("");
   const [travelVision, setTravelVision] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
 
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -46,6 +47,27 @@ export default function CustomTripPlanner() {
       if (session.user.email && !customerEmail) setCustomerEmail(session.user.email);
     }
   }, [status, session]);
+
+  useEffect(() => {
+    if (status !== "authenticated") return;
+
+    async function checkStatus() {
+      try {
+        const res = await fetch("/api/user/telegram-status");
+        if (res.ok) {
+          const data = await res.json();
+          setIsConnected(data.connected);
+        }
+      } catch (error) {
+        console.error("Failed to fetch telegram status:", error);
+      }
+    }
+
+    checkStatus();
+    const interval = setInterval(checkStatus, 3000); // Poll every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [status]);
 
   const handleStateToggle = (state: string) => {
     setSelectedStates(prev => 
@@ -82,6 +104,17 @@ export default function CustomTripPlanner() {
          return;
       }
     }
+
+    // 2b. Validate Telegram Connection
+    if (status === "authenticated" && !isConnected) {
+      toast.warning("Telegram Connection Required", {
+        description: "Please connect your account to Telegram to receive your custom quote. Click 'Connect Now' at the top of this form or visit your Profile page.",
+        duration: 8000,
+        icon: '💬'
+      });
+      return;
+    }
+
     if (selectedStates.length === 0) {
       toast.error("Please select at least one destination state.");
       return;
@@ -113,8 +146,8 @@ export default function CustomTripPlanner() {
         throw new Error(data.error || 'Failed to generate quote');
       }
 
-      toast.success("AI Quote Generated & Sent!", {
-        description: `Your custom itinerary for ${selectedStates.join(", ")} has been successfully planned by our elite Concierge AI and emailed directly to your inbox.`,
+      toast.success("AI Quote Generated!", {
+        description: `Your custom itinerary has been planned by our elite Concierge AI and sent directly to your Telegram chat.`,
         duration: 8000,
         icon: '✈️'
       });
@@ -142,7 +175,29 @@ export default function CustomTripPlanner() {
       {/* Decorative Accent Ring */}
       <div className="absolute -top-32 -right-32 w-64 h-64 border-[40px] border-orange-500/10 rounded-full blur-[2px] pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col md:flex-row gap-8 lg:gap-12">
+      <div className="relative z-10">
+        
+        {/* Telegram Connection Alert Banner */}
+        {status === "authenticated" && !isConnected && (
+          <div className="mb-6 bg-blue-500/10 border border-blue-500/30 rounded-2xl p-4 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Sparkles size={20} className="text-blue-400 flex-shrink-0" />
+              <p className="text-sm text-zinc-300">
+                <strong className="text-white">Quick Action:</strong> Connect with our Telegram bot to receive your custom itineraries directly in chat!
+              </p>
+            </div>
+            <a
+              href={`https://t.me/tripne_support_bot?start=${(session?.user as any)?.id || ''}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors whitespace-nowrap shadow-md shadow-blue-500/20"
+            >
+              Connect Now
+            </a>
+          </div>
+        )}
+
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-12">
         
         {/* Planner Header Context */}
         <div className="w-full md:w-1/3 flex flex-col h-full space-y-8">
@@ -297,5 +352,6 @@ export default function CustomTripPlanner() {
         </form>
       </div>
     </div>
-  );
+  </div>
+);
 }

@@ -8,6 +8,7 @@ import { toast } from "sonner";
 export default function ProfilePage() {
   const { data: session } = useSession();
   const [isEditing, setIsEditing] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +23,27 @@ export default function ProfilePage() {
         phone: "+91 98765 43210", 
       });
     }
+  }, [session]);
+
+  useEffect(() => {
+    if (!session?.user) return;
+
+    async function checkStatus() {
+      try {
+        const res = await fetch("/api/user/telegram-status");
+        if (res.ok) {
+          const data = await res.json();
+          setIsConnected(data.connected);
+        }
+      } catch (error) {
+        console.error("Failed to fetch telegram status:", error);
+      }
+    }
+
+    checkStatus();
+    const interval = setInterval(checkStatus, 3000); // Poll every 3 seconds while on page
+
+    return () => clearInterval(interval);
   }, [session]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -111,6 +133,31 @@ export default function ProfilePage() {
           </div>
         )}
       </form>
+
+      {/* Telegram Connection section */}
+      <div className="mt-8 pt-8 border-t border-zinc-100 dark:border-zinc-800">
+        <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
+          ✈️ Telegram Integration
+        </h3>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+          Connect your account to Telegram to receive your custom itineraries instantly in chat!
+        </p>
+        
+        {isConnected ? (
+          <div className="inline-flex items-center gap-2 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-4 py-2 rounded-xl border border-green-200 dark:border-green-800 font-medium">
+            <span>✅ Connected to Telegram</span>
+          </div>
+        ) : (
+          <a
+            href={`https://t.me/tripne_support_bot?start=${(session?.user as any)?.id || ''}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all shadow-md shadow-blue-500/20 hover:scale-[1.02] active:scale-95"
+          >
+            Connect Telegram
+          </a>
+        )}
+      </div>
     </div>
   );
 }

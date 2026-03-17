@@ -7,6 +7,8 @@ export interface IUser extends Document {
   passwordHash?: string;
   image?: string;
   emailVerified?: Date;
+  telegramChatId?: string;
+  telegramUsername?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -32,6 +34,8 @@ const UserSchema: Schema = new Schema(
     },
     image: { type: String },
     emailVerified: { type: Date },
+    telegramChatId: { type: String, sparse: true },
+    telegramUsername: { type: String, sparse: true },
   },
   {
     timestamps: true,
